@@ -2,5 +2,5 @@ local.qingzhou.io {
   import dnspod
   import security
 
-  respond "hello.900"
+  respond "hello caddy"
 }
