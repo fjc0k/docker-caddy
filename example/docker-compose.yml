@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  caddy:
+    build: ../src
+    ports:
+      - 80:80
+      - 443:443
+    env_file:
+      - ./.env
+    volumes:
+      - ./data/data:/data
+      - ./data/config:/config
+      - ./Caddyfile:/etc/caddy/Caddyfile

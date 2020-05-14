@@ -1,0 +1,3 @@
+tls {
+  dns lego_deprecated dnspod
+}

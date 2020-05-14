@@ -1,0 +1,11 @@
+# 参考 https://github.com/helmetjs/helmet 并提取了其默认设置
+header {
+  Strict-Transport-Security "max-age=15552000; includeSubDomains; preload"
+  X-DNS-Prefetch-Control "off"
+  X-Frame-Options "SAMEORIGIN"
+  X-Download-Options "noopen"
+  X-Content-Type-Options "nosniff"
+  X-XSS-Protection "1; mode=block"
+  -Server
+  -X-Powered-By
+}

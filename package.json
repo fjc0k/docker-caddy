@@ -1,0 +1,16 @@
+{
+  "name": "docker-caddy-dnspod",
+  "version": "1.0.0",
+  "repository": "git@github.com:fjc0k/docker-caddy-dnspod.git",
+  "license": "MIT",
+  "author": "Jay Fong <fjc0kb@gmail.com>",
+  "scripts": {
+    "build": "docker build -f ./src/Dockerfile -t jayfong/caddy-dnspod:latest ./src",
+    "example:reload": "docker-compose -f ./example/docker-compose.yml exec caddy caddy reload",
+    "example:run": "docker-compose -f ./example/docker-compose.yml up --build"
+  },
+  "devDependencies": {
+    "haoma": "^1.13.0",
+    "prettier": "^2"
+  }
+}
