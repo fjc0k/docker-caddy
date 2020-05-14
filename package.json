@@ -8,7 +8,7 @@
     "build": "docker build -f ./src/Dockerfile -t jayfong/caddy:latest ./src",
     "example:reload": "docker-compose -f ./example/docker-compose.yml exec caddy caddy reload",
     "example:run": "docker-compose -f ./example/docker-compose.yml up --build",
-    "release": "V=$(node -e \"console.log(require('fs').readFileSync('./src/Dockerfile').toString().match(/caddy:([\\d.]+)/)[1])\") && git tag -a 'v$V' -m 'release v$V' && git push --set-upstream origin --follow-tags"
+    "release": "V=$(node -e \"console.log(require('fs').readFileSync('./src/Dockerfile').toString().match(/caddy:([\\d.]+)/)[1])\") && git tag -a \"v$V\" -m \"release v$V\" && git push --set-upstream origin --follow-tags"
   },
   "devDependencies": {
     "haoma": "^1.13.0",
