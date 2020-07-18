@@ -1,5 +1,5 @@
 ###### 构建 ######
-FROM caddy:2.1.1-builder AS builder
+FROM caddy:2.0.0-builder AS builder
 
 RUN caddy-builder \
   # https://github.com/caddy-dns/lego-deprecated#%EF%B8%8F-this-module-is-deprecated
@@ -9,7 +9,7 @@ RUN caddy-builder \
 
 
 ###### 镜像 ######
-FROM caddy:2.1.1
+FROM caddy:2.0.0
 
 # 默认中国时区
 ENV TZ=Asia/Shanghai
@@ -22,8 +22,13 @@ RUN \
   # 安装 tzdata 以使用 TZ 环境变量设置时区
   apk add --no-cache --update tzdata
 
+WORKDIR /
+
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 COPY ./snippets/dnspod /etc/caddy/dnspod
 COPY ./snippets/security /etc/caddy/security
+COPY ./entrypoint.sh /entrypoint.sh
 
-CMD ["caddy", "run"]
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
