@@ -22,8 +22,6 @@ RUN \
   # 安装 tzdata 以使用 TZ 环境变量设置时区
   apk add --no-cache --update tzdata
 
-WORKDIR /
-
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 COPY ./snippets/dnspod /etc/caddy/dnspod
 COPY ./snippets/security /etc/caddy/security
