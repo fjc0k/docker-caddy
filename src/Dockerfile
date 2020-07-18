@@ -1,5 +1,5 @@
 ###### 构建 ######
-FROM caddy:2.0.0-builder AS builder
+FROM caddy:2.1.1-builder AS builder
 
 RUN caddy-builder \
   # https://github.com/caddy-dns/lego-deprecated#%EF%B8%8F-this-module-is-deprecated
@@ -9,7 +9,7 @@ RUN caddy-builder \
 
 
 ###### 镜像 ######
-FROM caddy:2.0.0
+FROM caddy:2.1.1
 
 # 默认中国时区
 ENV TZ=Asia/Shanghai
