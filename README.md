@@ -76,6 +76,8 @@ api.foo.bar {
 
 因此，本镜像支持通过环境变量 `OSCP_IP` 设置 `ocsp.int-x3.letsencrypt.org` 解析去的 IP，当然，这个 IP 内置了一个默认值 `23.215.132.184`，但其可能会变，如果无法使用，可使用国外的服务器 ping 一下 `ocsp.int-x3.letsencrypt.org` 获取最新的 IP 后覆盖掉默认值。
 
+推荐一个国外的在线 ping 服务：[https://check-host.net/check-ping?host=ocsp.int-x3.letsencrypt.org](https://check-host.net/check-ping?host=ocsp.int-x3.letsencrypt.org)
+
 ## 许可
 
 Jay Fong (c) MIT
