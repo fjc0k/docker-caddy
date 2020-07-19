@@ -11,7 +11,7 @@ Web 服务器 Caddy 2 的 Docker 镜像。
   - [支持 DNSPod](#支持-dnspod)
   - [内置安全相关的 HTTP 响应头](#内置安全相关的-http-响应头)
   - [支持使用 host.docker.internal 访问宿主服务](#支持使用-hostdockerinternal-访问宿主服务)
-  - [支持通过环境变量 OSCP_IP 设置 ocsp.int-x3.letsencrypt.org 的 IP 地址](#支持通过环境变量-oscp_ip-设置-ocspint-x3letsencryptorg-的-ip-地址)
+  - [支持通过环境变量 OCSP_IP 设置 ocsp.int-x3.letsencrypt.org 的 IP 地址](#支持通过环境变量-ocsp_ip-设置-ocspint-x3letsencryptorg-的-ip-地址)
 - [许可](#许可)
 
 <!-- /TOC -->
@@ -68,13 +68,13 @@ api.foo.bar {
 }
 ```
 
-### 支持通过环境变量 OSCP_IP 设置 ocsp.int-x3.letsencrypt.org 的 IP 地址
+### 支持通过环境变量 OCSP_IP 设置 ocsp.int-x3.letsencrypt.org 的 IP 地址
 
-具体讨论见「[国内 Let's Encrypt 的 OSCP 域名 ocsp.int-x3.letsencrypt.org 的解析被污染了？](https://www.v2ex.com/t/658605)」，其表现就像这样：
+具体讨论见「[国内 Let's Encrypt 的 OCSP 域名 ocsp.int-x3.letsencrypt.org 的解析被污染了？](https://www.v2ex.com/t/658605)」，其表现就像这样：
 
 > [WARNING] Stapling OCSP: no OCSP stapling for [*.com]: making OCSP request: Post http://ocsp.int-x3.letsencrypt.org: dial tcp 88.191.249.182:80: i/o timeout
 
-因此，本镜像支持通过环境变量 `OSCP_IP` 设置 `ocsp.int-x3.letsencrypt.org` 解析去的 IP，当然，这个 IP 内置了一个默认值 `23.215.132.184`，但其可能会变，如果无法使用，可使用国外的服务器 ping 一下 `ocsp.int-x3.letsencrypt.org` 获取最新的 IP 后覆盖掉默认值。
+因此，本镜像支持通过环境变量 `OCSP_IP` 设置 `ocsp.int-x3.letsencrypt.org` 解析去的 IP，当然，这个 IP 内置了一个默认值 `23.215.132.184`，但其可能会变，如果无法使用，可使用国外的服务器 ping 一下 `ocsp.int-x3.letsencrypt.org` 获取最新的 IP 后覆盖掉默认值。
 
 推荐一个国外的在线 ping 服务：[https://check-host.net/check-ping?host=ocsp.int-x3.letsencrypt.org](https://check-host.net/check-ping?host=ocsp.int-x3.letsencrypt.org)
 
