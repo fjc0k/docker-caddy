@@ -1,20 +1,14 @@
 ###### 构建 ######
-FROM caddy:2.0.0-builder AS builder
+FROM caddy:2.6.4-builder-alpine AS builder
 
-RUN caddy-builder \
-  # https://github.com/caddy-dns/lego-deprecated#%EF%B8%8F-this-module-is-deprecated
-  # https://go-acme.github.io/lego/dns/dnspod/
-  # 暂时使用 lego-deprecated 实现
-  github.com/caddy-dns/lego-deprecated
-
+RUN xcaddy build \
+  --with github.com/caddy-dns/dnspod
 
 ###### 镜像 ######
-FROM caddy:2.0.0
+FROM caddy:2.6.4-alpine
 
 # 默认中国时区
 ENV TZ=Asia/Shanghai
-# https://go-acme.github.io/lego/dns/dnspod/#additional-configuration
-ENV DNSPOD_HTTP_TIMEOUT=10000
 
 RUN \
   # 在根目录引用 /etc/caddy/Caddyfile 以让 caddy 相关命令自动发现
